@@ -9,4 +9,5 @@ class TestData:
     CHROME_DRIVER_LOCATION = "../drivers/chromedriver.exe"
     LOGIN_ERROR_MESSAGE = "Invalid username or password."
     COMPANY_NAME = "KokoSoft"
-
+    INVALID_PASSWORD = 'invalid_password'
+    EMPTY_STR = ''

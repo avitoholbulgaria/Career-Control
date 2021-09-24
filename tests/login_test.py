@@ -24,10 +24,28 @@ class LoginTest(unittest.TestCase):
         time.sleep(2)
         assert self.driver.title == TestData.COMPANY_NAME
 
-    def test_login_with_invalid_credentials(self):
+    def test_login_with_invalid_password(self):
+        login_page = LoginPage(self.driver)
+        login_page.enter_username(TestData.VALID_USERNAME)
+        login_page.enter_password(TestData.INVALID_PASSWORD)
+
+        login_page.click_login_button()
+
+        assert login_page.get_error_message() == TestData.LOGIN_ERROR_MESSAGE
+
+    def test_login_with_invalid_username(self):
         login_page = LoginPage(self.driver)
         login_page.enter_username(TestData.INVALID_USERNAME)
         login_page.enter_password(TestData.VALID_PASSWORD)
+
+        login_page.click_login_button()
+
+        assert login_page.get_error_message() == TestData.LOGIN_ERROR_MESSAGE
+
+    def test_login_with_empty_fields(self):
+        login_page = LoginPage(self.driver)
+        login_page.enter_username(TestData.EMPTY_STR)
+        login_page.enter_password(TestData.EMPTY_STR)
 
         login_page.click_login_button()
 

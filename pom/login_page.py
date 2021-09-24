@@ -1,11 +1,10 @@
 from selenium.webdriver.chrome.webdriver import WebDriver
 
+from pom.menu_page import MenuPage
 
-class LoginPage:
+
+class LoginPage(MenuPage):
     driver: WebDriver
-
-    def __init__(self, driver) -> None:
-        self.driver = driver
 
     def enter_username(self, username):
         self.driver.find_element_by_id("username").clear()
